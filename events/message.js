@@ -7,6 +7,13 @@ const tag = require("../models/tag");
 module.exports = async (client, message) => {
 
     let guildData = await client.data.getGuildDB(message.guild.id);
+    
+    let prefixEmbed = new Discord.MessageEmbed()
+    .setDescription(`Your prefix is **${guildData.prefix}**`)
+    
+    if(message.mentions.has('723251320705777694', { ignoreEveryone: true })) {
+        message.channel.send(prefixEmbed);
+    }
 
     // CHECKS
     if (message.author.bot) return;

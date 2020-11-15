@@ -17,7 +17,7 @@ module.exports = {
 
     async execute(client, message, args, data) {
 
-        //const msg = message.content.slice(message.content.indexOf(args[0]), message.content.length);
+        // let prefix = args[0];
         const msg = args.join(" ");
 
         if (data.guild.reportChannel == "null") {
@@ -28,7 +28,7 @@ module.exports = {
             return message.channel.send(announcementEmbed)
         }
         
-        if(msg.length == 0){
+        if(args.length == 0){
 
               let announcementEmbed = new Discord.MessageEmbed()
               .setTitle("Report Empty")
@@ -43,7 +43,11 @@ module.exports = {
             .setColor(config.color)
             .addField("Reporter/Reported By:", `${message.member.user}\n${message.member.user.username}#${message.member.user.discriminator} — ID: ${message.member.id}`)
             .addField("Contents of the Report:", `${msg}`)
+            .setFooter(`Sponsored by hyperlayer.co.za`, 'https://s3-us-west-2.amazonaws.com/hp-cdn-01/uploads/orgs/hyper-layer_logo.jpg')
             message.delete({ timeout: 5,});
+            if(message.member.voice.channel) {
+                announcementEmbed.addField("Voice Channel", message.member.voice.channel.name);
+    		}	
             // message.reply("Thank you for logging a report! <a:PusheenCompute:723598493112991767>");
             return client.channels.cache.get(`${data.guild.reportChannel}`).send(announcementEmbed)
             

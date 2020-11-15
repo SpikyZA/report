@@ -1,7 +1,7 @@
 const Discord = require("discord.js");
 const moment = require('moment');
 const emojis = require('../../tools/emojis.json');
-const { trimArray } = require('../../tools/Util');
+//const { trimArray } = require('../../tools/Util');
 const statuses = {
   online: `${emojis.online} \`Online\``,
   idle: `${emojis.idle} \`AFK\``,

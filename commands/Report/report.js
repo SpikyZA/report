@@ -1,6 +1,6 @@
 const Discord = require("discord.js");
-const config = require("../../config.json")
-const imgur = require("imgur")
+const config = require("../../config.json");
+const imgur = require('imgur');
 
 module.exports = {
       //Command Information
@@ -9,7 +9,7 @@ module.exports = {
       usage: "`prefix reportchannel #channelname`",
       enabled: true,
       guildOnly: true,
-      aliases: ["channel"],
+      aliases: ["r"],
       memberPermissions: ["MANAGE_MESSAGES"],
       botPermissions: [],
       nsfw: false,
@@ -18,8 +18,8 @@ module.exports = {
 
     async execute(client, message, args, data) {
 
+        // let prefix = args[0];
         const msg = args.join(" ");
-        
         let messageAttachment = message.attachments.size > 0 ? message.attachments.array()[0].url : null;
         imgur.setClientId('b4a5295aceba8f2');
         imgur.setAPIUrl('https://api.imgur.com/3/');
@@ -28,7 +28,7 @@ module.exports = {
             let announcementEmbed = new Discord.MessageEmbed()
             .setTitle("Report Log Channel")
             .setColor(config.color)
-            .setDescription(`This server does not have a report channel setup yet. \n\nYou can run the *rb!helpsetup* to see how to do it`)
+            .setDescription(`This server does not have a report channel setup yet. \n\nYou can run the *r!helpsetup* to see how to do it`)
             return message.channel.send(announcementEmbed)
         }
         
@@ -44,30 +44,37 @@ module.exports = {
         else {
             let ifimage;
             let imageUrl;
-            if(messageAttachment == null)
-                ifimage = "No";
-            else
-                ifimage = "Yes";
+            // if(messageAttachment == null)
+            //     ifimage = "No";
+            // else
+            //     ifimage = "Yes";
 
             let announcementEmbed = new Discord.MessageEmbed()
             .setTitle(`<:check:723597104261365953> New Report from **${message.member.user.username}**`)
             .setColor(config.color)
             .addField("Reporter/Reported By:", `${message.member.user}\n${message.member.user.username}#${message.member.user.discriminator} — ID: ${message.member.id}`)
             .addField("Contents of the Report:", `${msg}`)
-            .addField("Is there an image?", `${ifimage}`)
+            .addField("Channel", `<#${message.channel.id}>`)
+            .setFooter(`Sponsored by hyperlayer.co.za`, 'https://s3-us-west-2.amazonaws.com/hp-cdn-01/uploads/orgs/hyper-layer_logo.jpg')
+            // .addField("Is there an image?", `${ifimage}`)
                 //announcementEmbed.setImage(imageUrl)
-            message.delete({ timeout: 1000,});
+            
+            if(message.member.voice.channel) {
+                announcementEmbed.addField("Voice Channel", message.member.voice.channel.name);
+    		}	
+            message.delete({ timeout: 5000,});
             message.reply("Thank you for logging a report! <a:PusheenCompute:723598493112991767>");
             client.channels.cache.get(`${data.guild.reportChannel}`).send(announcementEmbed)
-            if(ifimage == "Yes") {
-                imgur.uploadUrl(`${messageAttachment}`)
-                .then(function (json) {
-                    client.channels.cache.get(`${data.guild.reportChannel}`).send(json.data.link)
-                })
-                .catch(function (err) {
-                    console.error(err.message);
-                });
-            }
+            
+            // if(ifimage == "Yes") {
+            //     imgur.uploadUrl(`${messageAttachment}`)
+            //     .then(function (json) {
+            //         //client.channels.cache.get(`${data.guild.reportChannel}`).send(json.data.link)
+            //     })
+            //     .catch(function (err) {
+            //         console.error(err.message);
+            //     });
+            // }
             
         }
 

@@ -16,11 +16,21 @@ module.exports = {
     ownerOnly: false,
 
     async execute(client, message, args, data) {
+        
+	 //let totalPeople = client.guilds.cache.map(person => person.memberCount).reduce(function (s, v) { return s + (v || 0); }, 0)
+   
 
       //Get all the data for the bot
       let uptime = convertMS(message.client.uptime);
-      let totalGuilds = client.guilds.cache.size;
-      let users = client.users.cache.size;
+      let serverGuilds = await client.shard.fetchClientValues('guilds.cache.size');
+      let totalGuilds = serverGuilds.reduce((p, n) => p + n, 0);
+        
+      //let serverCount = await client.shard.fetchClientValues('client.users.cache.size');
+      //let totalMemberCount = serverCount.reduce((p, n) => p + n, 0);
+        
+        
+      //let totalGuilds = client.users.cache.size;
+      //let users = client.users.cache.size;
       let channels = client.channels.cache.size
       let ramUsage = (process.memoryUsage().heapTotal / 1024 / 1024).toFixed(2) + "MB";
       let discord = Discord.version;
@@ -49,7 +59,7 @@ module.exports = {
       //Add all the other values for the embed
       announcementEmbed.addFields(
         { name: "Guilds", value: totalGuilds, inline: true},
-        { name: "Users", value: users, inline: true },
+        //{ name: "Users", value: client.users.cache.size, inline: true },
         { name: "Channels", value: channels, inline: true },
         { name: "RAM usage", value: ramUsage, inline: true },
         { name: "Discord.js", value: discord, inline: true },

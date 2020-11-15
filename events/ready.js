@@ -9,7 +9,7 @@ module.exports = async (client) => {
         console.log(e);
     }
 
-    let activities = [ `beta testers`, `version beta0.1`], i = 0;
+    let activities = [ `for Reports`, `version 4` ], i = 0;
     setInterval(() => client.user.setActivity(`${activities[i++ % activities.length]}`, { type: "WATCHING" }), 15000);
 
 };

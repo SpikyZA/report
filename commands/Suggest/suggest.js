@@ -90,7 +90,7 @@ module.exports = {
               .addField("Suggestion", `${args.join(" ")}`)
               .setFooter(`SuggestID: ${suggestCode}`)
               .setColor("#FA8334")
-              client.channels.cache.get(`${data.guild.reportChannel}`).send(suggestNew).then(function (message) {
+              client.channels.cache.get(`${data.guild.suggestLogs}`).send(suggestNew).then(function (message) {
                   message.react("👍")
                   message.react("👎")
                 });

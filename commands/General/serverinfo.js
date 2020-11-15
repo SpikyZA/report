@@ -51,7 +51,7 @@ module.exports = {
             
         // Get member stats
         const members = message.guild.members.cache.array();
-        const memberCount = members.length;
+        const memberCount = message.guild.memberCount;
         const online = members.filter((m) => m.presence.status === 'online').length;
         const offline =  members.filter((m) => m.presence.status === 'offline').length;
         const dnd =  members.filter((m) => m.presence.status === 'dnd').length;
@@ -68,7 +68,7 @@ module.exports = {
         const categoryChannels = channels.filter(c => c.type === 'category').length;
 
         const serverStats = stripIndent`
-        Members   :: [ ${memberCount} ]
+        Members   :: [ ${message.guild.memberCount} ]
                   :: ${online} Online
                   :: ${dnd} Busy
                   :: ${afk} AFK

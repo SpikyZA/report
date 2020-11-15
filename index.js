@@ -1,8 +1,10 @@
 const Discord = require("discord.js");
+
 const client = new Discord.Client();
+
 const imgur = require('imgur');
-//const DBL = require("dblapi.js");
-//const dbl = new DBL('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjcyMzI1MTMyMDcwNTc3NzY5NCIsImJvdCI6dHJ1ZSwiaWF0IjoxNTk4MjYzNTk4fQ.ZbI1riY3CChzqrwYyXjOLwTTnls4YjQhph3lzl7RjOI', client);
+const DBL = require("dblapi.js");
+const dbl = new DBL('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjcyMzI1MTMyMDcwNTc3NzY5NCIsImJvdCI6dHJ1ZSwiaWF0IjoxNjAxOTc4Njg5fQ.G7TK-GDhqVM8BxRlQyVRYHYytJd0fmS3-TY-6iiySY0', client);
 
 const config = require("./config.json"),
 fs = require("fs"),
@@ -38,7 +40,7 @@ folders.forEach(direct =>{
       const command = require(`./commands/${direct}/${file}`);
       client.commands.set(command.name, command);
   }
-  })
+  });
 
   // connect to mongoose database
   mongoose.connect(config.mongoDB, { useNewUrlParser: true, useUnifiedTopology: true }).then(() => {
@@ -47,16 +49,15 @@ folders.forEach(direct =>{
       client.logger.log("Unable to connect to the Mongodb database. Error:"+err, "error");
   });
 
-  client.on("guildCreate", guild => {
-    console.log("Joined Server: " + guild.name + "\nServer Owner: " + guild.owner.user.username + "#" + guild.owner.user.discriminator + " — ID: " + guild.owner.id);
-    client.channels.cache.get('757242649509101599').send(`<:add:723597102143242320> **Report** joined ${guild.name} \nOwner: ${guild.owner.user.username}#${guild.owner.user.discriminator} — ID: ${guild.owner.id}`);
-  })
+ client.on("guildCreate", guild => {
+      console.log("Joined Server: " + guild.name);
+      client.channels.cache.get('723301502915182602').send(`<:add:723597102143242320> **Report** joined ${guild.name} | GuildID: ${guild.id}`);
+});
   
-  client.on ('guildDelete', guild => {
+ client.on ('guildDelete', guild => {
   console.log("Report left " + guild.name);
-  client.channels.cache.get('757242649509101599').send(`<:remove:723597101887652062> **Report** left ${guild.name} :disappointed:`);
-})
+  client.channels.cache.get('723301502915182602').send(`<:remove:723597101887652062> **Report** left ${guild.name} :disappointed:`);
+});
 }
-
 init();
 client.login(config.token);
