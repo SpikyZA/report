@@ -4,7 +4,7 @@ Report is a Discord bot that host a report management system for your server.
 
   - Reports
   - Moderation
-  - Ssuggestions
+  - Suggestions
 
 ## Prerequisites
 
