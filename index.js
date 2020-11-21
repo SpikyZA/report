@@ -3,8 +3,6 @@ const Discord = require("discord.js");
 const client = new Discord.Client();
 
 const imgur = require('imgur');
-const DBL = require("dblapi.js");
-const dbl = new DBL('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjcyMzI1MTMyMDcwNTc3NzY5NCIsImJvdCI6dHJ1ZSwiaWF0IjoxNjAxOTc4Njg5fQ.G7TK-GDhqVM8BxRlQyVRYHYytJd0fmS3-TY-6iiySY0', client);
 
 const config = require("./config.json"),
 fs = require("fs"),
