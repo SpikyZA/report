@@ -1,7 +1,7 @@
 {
-  "name": "alita",
+  "name": "report",
   "version": "1.0.0",
-  "description": "An open source bot using discord.js, will include some random features for your faces",
+  "description": "report bot",
   "main": "Alita.js",
   "dependencies": {
     "axios": "^0.19.2",
@@ -25,19 +25,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/KSJaay/Alita.git"
-  },
   "keywords": [
     "Alita",
     "discord",
     "mongo"
   ],
-  "author": "KSJaay",
-  "license": "GNU General Public License v3.0",
-  "bugs": {
-    "url": "https://github.com/KSJaay/Alita/issues"
-  },
-  "homepage": "https://github.com/KSJaay/Alita#readme"
 }
