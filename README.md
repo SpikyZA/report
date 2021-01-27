@@ -15,6 +15,19 @@ Report is a Discord bot that host a report management system for your server.
 ## Installation
 *coming soon*
 
+## Privacy
+
+We collect the following information:
+- Your guild id
+- Server owner id
+- For suggestions: user name and id
+
+We use this information for bot purposes, managing the bot and providing you with the bot service.
+
+If you would like us to remove this information we collected, please email us on privacy@nerdnetwork.digital, and we kindly request for you to remove the bot from your server.
+
+Information is automatically deleted if your bot leaves a guild.
+
 ## License
 
 MIT License
@@ -28,7 +41,7 @@ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
 copies of the Software, and to permit persons to whom the Software is
 furnished to do so, subject to the following conditions:
 
-- You can not download this bot, upload it to a Bot directory and claim it as yours!
+- You can not download this bot, upload it to a Bot directory and claim it as yours.
 - Sell this bot as your own.
 - Claim this bot as your own.
 - Can self-host it for your own community
