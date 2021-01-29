@@ -1,5 +1,9 @@
 # Report
 
+<a href="https://top.gg/bot/723251320705777694">
+    <img src="https://top.gg/api/widget/723251320705777694.svg" alt="Report" />
+</a>
+
 Report is a Discord bot that host a report management system for your server.
 
   - Reports
