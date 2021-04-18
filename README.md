@@ -52,3 +52,6 @@ You cannot:
 - Sell the bot as your own
 - Release the bot as your own
 - Claim that this is your bot
+
+You can:
+- Use the bot in your own server
