@@ -47,11 +47,3 @@ This program is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU General Public License for more details.
-
-You cannot:
-- Sell the bot as your own
-- Release the bot as your own
-- Claim that this is your bot
-
-You can:
-- Use the bot in your own server
